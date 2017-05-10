@@ -62,16 +62,16 @@ public abstract class Person {
         return mailContacts;
     }
 
+    public LocalDate getBornDate() {
+        return bornDate;
+    }
+
     protected void setId(Long id) {
         this.id = id;
     }
 
     protected void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public LocalDate getBornDate() {
-        return bornDate;
     }
 
     protected void setBornDate(LocalDate bornDate) {
@@ -90,7 +90,7 @@ public abstract class Person {
         this.rg = rg;
     }
 
-    public void setAddress(Address address) {
+    protected void setAddress(Address address) {
         this.address = address;
     }
 
