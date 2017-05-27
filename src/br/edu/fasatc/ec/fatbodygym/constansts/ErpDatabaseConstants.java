@@ -1,11 +1,11 @@
 package br.edu.fasatc.ec.fatbodygym.constansts;
 
-public class ErpDatabaseConstants {
+public interface ErpDatabaseConstants {
 
-	public static final String TABLE_USUARIOS = "table_usuarios.ser";
-	public static final String TABLE_ALUNOS = "table_alunos.ser";
-	public static final String TABLE_EXERCICIOS = "table_exercicios.ser";
-	public static final String TABLE_INSTRUTORES = "table_instrutores.ser";
-	public static final String TABLE_TREINOS = "table_treinos.ser";
+	String TABLE_USUARIOS = "table_usuarios.datafile";
+	String TABLE_ALUNOS = "table_alunos.datafile";
+	String TABLE_EXERCICIOS = "table_exercicios.datafile";
+	String TABLE_INSTRUTORES = "table_instrutores.datafile";
+	String TABLE_TREINOS = "table_treinos.datafile";
 
 }
