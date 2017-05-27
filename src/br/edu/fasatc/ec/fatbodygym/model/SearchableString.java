@@ -13,14 +13,14 @@ import java.util.stream.Collectors;
 public interface SearchableString {
 
     /**
-     * Utilizar a sequ?ncia mais perform?tica.
+     * Utilizar a sequência mais performática.
      *
      * @return
      */
     public String[] getSearchableFields();
 
     /**
-     * M?todo que efetua uma consulta nos campos mapeados com searchable.
+     * Método que efetua uma consulta nos campos mapeados com searchable.
      *
      * @param query
      * @return
@@ -35,7 +35,7 @@ public interface SearchableString {
     }
 
     /**
-     * M?todo que efetua uma consulta nos campos mapeados com searchable.
+     * Método que efetua uma consulta nos campos mapeados com searchable.
      *
      * @param query
      * @return
