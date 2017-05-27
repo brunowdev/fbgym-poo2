@@ -725,20 +725,21 @@ public class MenuApp {
 	 */
 	private static Instrutor lerInstrutor(AbstractBaseMenu menu, Instrutor instrutor) {
 
-		final Instrutor instrutorParaSalvar = instrutor == null ? new Instrutor() : instrutor;
+		final Instrutor.Builder instrutorBuilder = Objects.isNull(instrutor) ? Instrutor.Builder.create()
+				: Instrutor.Builder.from(instrutor);
 
 		System.out.println((instrutor == null ? ("Cadastrando") : ("Alterando")) + " instrutor");
 		System.out.println("Nome: > ");
-		instrutorParaSalvar.setNome(menu.lerTexto());
+		instrutorBuilder.nome(menu.lerTexto());
 		System.out.println("CPF: > ");
-		instrutorParaSalvar.setCpf(menu.lerTexto());
+		instrutorBuilder.cpf(menu.lerTexto());
 		System.out.println("RG: > ");
-		instrutorParaSalvar.setRg(menu.lerTexto());
+		instrutorBuilder.rg(menu.lerTexto());
 		System.out.println("Data nascimento: (dd/mm/aaaa) > ");
-		instrutorParaSalvar.setDataNascimento(menu.lerData(true));
+		instrutorBuilder.dataNascimento(menu.lerData(true));
 		System.out.println("Instrutor " + (instrutor == null ? ("cadastrado") : ("alterado")) + " com sucesso!");
 
-		return instrutorParaSalvar;
+		return instrutorBuilder.build();
 	}
 
 	private static Instrutor localizarInstrutorParaEditar(AbstractBaseMenu menu) {
