@@ -30,9 +30,7 @@ public class Relatorios {
 	public static void relatorioExercicioMaisPraticados(String path, Usuario usuario)
 			throws FileNotFoundException {
 
-		RemoteConnection rc = new RemoteConnection();
-
-		rc.connect(usuario);
+		RemoteConnection rc = connect(usuario);
 
 		List<Treino> treinos = rc.getTreinoFacade().buscarTodosTreinos();
 
@@ -85,9 +83,7 @@ public class Relatorios {
 	 */
 	public static void relatorioAlunosMaisAtivos(String path, Usuario usuario) throws FileNotFoundException {
 
-		RemoteConnection rc = new RemoteConnection();
-
-		rc.connect(usuario);
+		RemoteConnection rc = connect(usuario);
 
 		List<Treino> treinos = rc.getTreinoFacade().buscarTodosTreinos();
 
@@ -135,9 +131,7 @@ public class Relatorios {
 	 */
 	public static void relatorioAlunos(String path, Usuario usuario) throws FileNotFoundException {
 
-		RemoteConnection rc = new RemoteConnection();
-
-		rc.connect(usuario);
+		RemoteConnection rc = connect(usuario);
 
 		List<Aluno> alunos = rc.getAlunosApi().buscarTodosAlunos();
 
@@ -163,6 +157,14 @@ public class Relatorios {
 			System.out.println("Ocorreu um erro ao gerar relatório." + e.getMessage());
 		}
 
+	}
+	
+	private static final RemoteConnection connect(Usuario usuario) {
+		RemoteConnection rc = new RemoteConnection();
+
+		rc.connect(usuario);
+		
+		return rc;
 	}
 
 }
