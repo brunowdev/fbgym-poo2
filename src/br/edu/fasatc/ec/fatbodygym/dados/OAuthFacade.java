@@ -11,6 +11,11 @@ public abstract class OAuthFacade {
 		this.usuario = usuario;
 	}
 
+	/**
+	 * Método que permite que cada façade faça a autenticação aos seus recursos.
+	 * 
+	 * @throws NotAuthorizedException
+	 */
 	public abstract void checkAuthorization() throws NotAuthorizedException;
 
 }
