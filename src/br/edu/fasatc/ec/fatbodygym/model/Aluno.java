@@ -25,7 +25,7 @@ public final class Aluno extends Pessoa implements SearchableString {
 		return peso;
 	}
 
-	public void setPeso(BigDecimal peso) {
+	protected void setPeso(BigDecimal peso) {
 		this.peso = peso;
 	}
 

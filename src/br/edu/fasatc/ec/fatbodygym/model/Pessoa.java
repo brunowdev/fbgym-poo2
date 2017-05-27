@@ -42,27 +42,27 @@ public abstract class Pessoa extends AbstractEntidadeEntity {
 		return ativo;
 	}
 
-	public void setNome(String nome) {
+	protected void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	public void setCpf(String cpf) {
+	protected void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
-	public void setRg(String rg) {
+	protected void setRg(String rg) {
 		this.rg = rg;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
+	protected void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public void setAtivo(Boolean ativo) {
+	protected void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
 
-	public void setId(Long id) {
+	protected void setId(Long id) {
 		this.id = id;
 	}
 
