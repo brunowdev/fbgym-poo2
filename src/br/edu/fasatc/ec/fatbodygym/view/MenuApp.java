@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -453,22 +454,22 @@ public class MenuApp {
 	 */
 	private static Aluno lerAluno(AbstractBaseMenu menu, Aluno aluno) {
 
-		final Aluno alunoParaSalvar = aluno == null ? new Aluno() : aluno;
+		final Aluno.Builder alunoBuilder = Objects.isNull(aluno) ? Aluno.Builder.from(aluno) : Aluno.Builder.create();
 
 		System.out.println((aluno == null ? ("Cadastrando") : ("Alterando")) + " aluno");
 		System.out.println("Nome: > ");
-		alunoParaSalvar.setNome(menu.lerTexto());
+		alunoBuilder.nome(menu.lerTexto());
 		System.out.println("CPF: > ");
-		alunoParaSalvar.setCpf(menu.lerTexto());
+		alunoBuilder.cpf(menu.lerTexto());
 		System.out.println("RG: > ");
-		alunoParaSalvar.setRg(menu.lerTexto());
+		alunoBuilder.rg(menu.lerTexto());
 		System.out.println("Data nascimento: (dd/mm/aaaa) > ");
-		alunoParaSalvar.setDataNascimento(menu.lerData(true));
+		alunoBuilder.dataNascimento(menu.lerData(true));
 		System.out.println("Peso: (kg) > ");
-		alunoParaSalvar.setPeso(menu.lerBigdecimal());
+		alunoBuilder.peso(menu.lerBigdecimal());
 		System.out.println("Aluno " + (aluno == null ? ("cadastrado") : ("alterado")) + " com sucesso!");
 
-		return alunoParaSalvar;
+		return alunoBuilder.build();
 	}
 
 	private static Aluno localizarAlunoParaEditar(AbstractBaseMenu menu) {
