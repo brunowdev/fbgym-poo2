@@ -454,7 +454,7 @@ public class MenuApp {
 	 */
 	private static Aluno lerAluno(AbstractBaseMenu menu, Aluno aluno) {
 
-		final Aluno.Builder alunoBuilder = Objects.isNull(aluno) ? Aluno.Builder.from(aluno) : Aluno.Builder.create();
+		final Aluno.Builder alunoBuilder = Objects.isNull(aluno) ? Aluno.Builder.create() : Aluno.Builder.from(aluno);
 
 		System.out.println((aluno == null ? ("Cadastrando") : ("Alterando")) + " aluno");
 		System.out.println("Nome: > ");
