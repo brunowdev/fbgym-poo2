@@ -9,9 +9,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import br.edu.fasatc.ec.fatbodygym.dados.RemoteConnection;
 import br.edu.fasatc.ec.fatbodygym.model.Aluno;
 import br.edu.fasatc.ec.fatbodygym.model.Exercicio;
 import br.edu.fasatc.ec.fatbodygym.model.Treino;
+import br.edu.fasatc.ec.fatbodygym.model.Usuario;
 import br.edu.fasatc.ec.fatbodygym.model.comparators.AlunoComparator;
 import br.edu.fasatc.ec.fatbodygym.utils.ComparadorValorMap;
 
@@ -25,7 +27,15 @@ public class Relatorios {
 	 * @param treinos
 	 * @throws FileNotFoundException
 	 */
-	public static void relatorioExercicioMaisPraticados(String path, List<Treino> treinos) throws FileNotFoundException {
+	public static void relatorioExercicioMaisPraticados(String path, Usuario usuario)
+			throws FileNotFoundException {
+
+		RemoteConnection rc = new RemoteConnection();
+
+		rc.connect(usuario);
+
+		List<Treino> treinos = rc.getTreinoFacade().buscarTodosTreinos();
+
 		final String formato = "%s\t\t\t%s\t\t%n";
 
 		try (Formatter formatter = new Formatter(path)) {
@@ -73,7 +83,14 @@ public class Relatorios {
 	 * @param treinos
 	 * @throws FileNotFoundException
 	 */
-	public static void relatorioAlunosMaisAtivos(String path, List<Treino> treinos) throws FileNotFoundException {
+	public static void relatorioAlunosMaisAtivos(String path, Usuario usuario) throws FileNotFoundException {
+
+		RemoteConnection rc = new RemoteConnection();
+
+		rc.connect(usuario);
+
+		List<Treino> treinos = rc.getTreinoFacade().buscarTodosTreinos();
+
 		final String formato = "%s\t\t\t%s\t\t%n";
 
 		try (Formatter formatter = new Formatter(path)) {
@@ -116,7 +133,14 @@ public class Relatorios {
 	 * @param alunos
 	 * @throws FileNotFoundException
 	 */
-	public static void relatorioAlunos(String path, List<Aluno> alunos) throws FileNotFoundException {
+	public static void relatorioAlunos(String path, Usuario usuario) throws FileNotFoundException {
+
+		RemoteConnection rc = new RemoteConnection();
+
+		rc.connect(usuario);
+
+		List<Aluno> alunos = rc.getAlunosApi().buscarTodosAlunos();
+
 		final String formato = "%s\t\t%s\t\t%s\t\t%-21s\t\t%n";
 		final SimpleDateFormat formataData = new SimpleDateFormat("dd-mm-yyyy");
 
@@ -129,7 +153,8 @@ public class Relatorios {
 
 			for (final Aluno aluno : alunos) {
 				System.out.println(aluno.getNome());
-				formatter.format(formato, aluno.getId(), aluno.getNome(), aluno.getCpf(), formataData.format(aluno.getDataNascimento()));
+				formatter.format(formato, aluno.getId(), aluno.getNome(), aluno.getCpf(),
+						formataData.format(aluno.getDataNascimento()));
 			}
 
 			System.out.println("Relatório gerado com sucesso!");

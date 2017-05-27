@@ -425,22 +425,20 @@ public class MenuApp {
 	private static void gerarRelatorio(AbstractBaseMenu menu, int idRelatorio)
 			throws FileNotFoundException, WriteFileException, ReadFileException {
 
-		final TreinoRepository treinoRepository = new TreinoRepository();
-		System.out.println("Informe o caminho para gerar o relat�rio: ");
+		System.out.println("Informe o caminho para gerar o relatório: ");
 		final String caminhoRelatorio = menu.lerTexto();
 
 		switch (idRelatorio) {
 		case 1:
-			Relatorios.relatorioExercicioMaisPraticados(caminhoRelatorio, treinoRepository.findAll());
+			Relatorios.relatorioExercicioMaisPraticados(caminhoRelatorio, usuarioLogado);
 			break;
 
 		case 2:
-			Relatorios.relatorioAlunosMaisAtivos(caminhoRelatorio, treinoRepository.findAll());
+			Relatorios.relatorioAlunosMaisAtivos(caminhoRelatorio, usuarioLogado);
 			break;
 
 		case 3:
-			final AlunoRepository alunoRepository = new AlunoRepository();
-			Relatorios.relatorioAlunos(caminhoRelatorio, alunoRepository.findAll());
+			Relatorios.relatorioAlunos(caminhoRelatorio, usuarioLogado);
 			break;
 
 		default:
