@@ -1,7 +1,10 @@
 package br.edu.fasatc.ec.fatbodygym.model;
 
+import java.util.Objects;
+
 import br.edu.fasatc.ec.fatbodygym.constansts.ErpDatabaseConstants;
 import br.edu.fasatc.ec.fatbodygym.constansts.LocalFileAsTable;
+import br.edu.fasatc.ec.fatbodygym.utils.security.Criptografia;
 
 @LocalFileAsTable(tableName = ErpDatabaseConstants.TABLE_USUARIOS)
 public class Usuario extends AbstractEntidadeEntity implements SearchableString {
@@ -106,6 +109,17 @@ public class Usuario extends AbstractEntidadeEntity implements SearchableString 
 	@Override
 	public boolean containsMatch(String query) {
 		return false;
+	}
+
+	public static boolean usuarioCorresponde(Usuario usuarioBaseDados, Usuario candidate) {
+
+		Objects.requireNonNull(usuarioBaseDados);
+
+		Objects.requireNonNull(candidate);
+
+		final String candidatePassword = Criptografia.criptografar(candidate.getSenha());
+
+		return usuarioBaseDados.getSenha().equals(candidatePassword);
 	}
 
 }

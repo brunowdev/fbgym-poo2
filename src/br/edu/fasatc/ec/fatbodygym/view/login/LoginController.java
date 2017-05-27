@@ -46,7 +46,7 @@ public class LoginController {
 		} catch (final EntidadeNaoEncontradaException e) {
 		}
 
-		if (usuarioLocalizado == null || !usuarioLocalizado.getSenha().equals(usuario.getSenha())) {
+		if (usuarioLocalizado == null || !Usuario.usuarioCorresponde(usuarioLocalizado,  usuario)) {
 			JOptionPane.showMessageDialog(null, "Usuário e/ou senha inválidos.", "Acesso não permitido", JOptionPane.ERROR_MESSAGE);
 		}
 
