@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import br.edu.fasatc.ec.fatbodygym.constansts.ErpDatabaseConstants;
 import br.edu.fasatc.ec.fatbodygym.constansts.LocalFileAsTable;
+import br.edu.fasatc.ec.fatbodygym.model.common.EntityBuilder;
 import br.edu.fasatc.ec.fatbodygym.utils.security.Criptografia;
 
 @LocalFileAsTable(tableName = ErpDatabaseConstants.TABLE_USUARIOS)
@@ -20,7 +21,7 @@ public class Usuario extends AbstractEntidadeEntity implements SearchableString 
 
 	public Usuario(String email, String senha) {
 		this.email = email;
-		this.senha = senha;
+		this.senha = Criptografia.criptografar(senha);
 	}
 
 	private Long id;
@@ -45,19 +46,19 @@ public class Usuario extends AbstractEntidadeEntity implements SearchableString 
 		return aluno;
 	}
 
-	public void setAluno(Aluno aluno) {
+	protected void setAluno(Aluno aluno) {
 		this.aluno = aluno;
 	}
 
-	public void setId(Long id) {
+	protected void setId(Long id) {
 		this.id = id;
 	}
 
-	public void setEmail(String email) {
+	protected void setEmail(String email) {
 		this.email = email;
 	}
 
-	public void setSenha(String senha) {
+	protected void setSenha(String senha) {
 		this.senha = senha;
 	}
 
@@ -120,6 +121,38 @@ public class Usuario extends AbstractEntidadeEntity implements SearchableString 
 		final String candidatePassword = Criptografia.criptografar(candidate.getSenha());
 
 		return usuarioBaseDados.getSenha().equals(candidatePassword);
+	}
+	
+	public static class Builder extends EntityBuilder<Usuario> {
+		
+		protected Builder(Usuario aluno) {
+			super(aluno);
+		}
+
+		public static Builder create() {
+			return new Builder(new Usuario());
+		}
+		
+		public static Builder from(Usuario from) {
+			return new Builder(from);
+		}
+		
+		
+		public Builder email(String email) {
+			entity.setEmail(email);
+			return this;
+		}
+
+		public Builder senha(String senha) {
+			entity.setSenha(Criptografia.criptografar(senha));
+			return this;
+		}
+
+		public Builder aluno(Aluno aluno) {
+			entity.setAluno(aluno);
+			return this;
+		}
+
 	}
 
 }

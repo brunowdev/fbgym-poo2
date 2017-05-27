@@ -323,9 +323,13 @@ public class MenuApp {
 
 			case 1:
 				final Aluno alunoCadastrado = alunoRepository.merge(lerAluno(menu, null));
+
 				final Usuario usuarioAluno = usuarioRepository.merge(lerUsuario(menu, null));
-				usuarioAluno.setAluno(alunoCadastrado);
-				usuarioRepository.merge(usuarioAluno);
+
+				Usuario.Builder usuarioBuilder = Usuario.Builder.from(usuarioAluno);
+
+				usuarioBuilder.aluno(alunoCadastrado);
+				usuarioRepository.merge(usuarioBuilder.build());
 				break;
 			case 2:
 				final Aluno aluno = localizarAlunoParaEditar(menu);
@@ -859,16 +863,17 @@ public class MenuApp {
 	 */
 	private static Usuario lerUsuario(AbstractBaseMenu menu, Usuario usuario) {
 
-		final Usuario usuarioParaSalvar = usuario == null ? new Usuario() : usuario;
+		final Usuario.Builder usuarioBuilder = Objects.isNull(usuario) ? Usuario.Builder.create()
+				: Usuario.Builder.from(usuario);
 
-		System.out.println((usuario == null ? ("Cadastrando") : ("Alterando")) + " usu�rio");
+		System.out.println((Objects.isNull(usuario) ? ("Cadastrando") : ("Alterando")) + " usuário");
 		System.out.println("E-mail: > ");
-		usuarioParaSalvar.setEmail(menu.lerTexto());
+		usuarioBuilder.email(menu.lerTexto());
 		System.out.println("Senha: > ");
-		usuarioParaSalvar.setSenha(menu.lerTexto());
-		System.out.println("Usu�rio " + (usuario == null ? ("cadastrado") : ("alterado")) + " com sucesso!");
+		usuarioBuilder.senha(menu.lerTexto());
+		System.out.println("Usuário " + (usuario == null ? ("cadastrado") : ("alterado")) + " com sucesso!");
 
-		return usuarioParaSalvar;
+		return usuarioBuilder.build();
 	}
 
 	private static Usuario localizarUsuarioParaEditar(AbstractBaseMenu menu) {
