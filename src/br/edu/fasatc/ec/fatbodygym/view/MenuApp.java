@@ -187,7 +187,7 @@ public class MenuApp {
 			}
 
 			if (treino == null) {
-				System.out.println("Treino n�o encontrado!");
+				System.out.println("Treino não encontrado!");
 			}
 		}
 
@@ -483,13 +483,13 @@ public class MenuApp {
 		while (aluno == null) {
 
 			try {
-				System.out.println("Informe o c�digo para alterar: ");
+				System.out.println("Informe o código para alterar: ");
 				aluno = alunoRepository.findById(new Aluno(menu.lerLong()));
 			} catch (final Exception e) {
 			}
 
 			if (aluno == null) {
-				System.out.println("Aluno n�o encontrado!");
+				System.out.println("Aluno não encontrado!");
 			}
 		}
 
@@ -511,7 +511,7 @@ public class MenuApp {
 			}
 
 			if (aluno == null) {
-				System.out.println("Aluno n�o encontrado!");
+				System.out.println("Aluno não encontrado!");
 			}
 		}
 
@@ -524,7 +524,7 @@ public class MenuApp {
 		while (aluno == null) {
 
 			try {
-				System.out.println("Informe o c�digo para buscar: ");
+				System.out.println("Informe o código para buscar: ");
 				final Long id = menu.lerLong();
 				aluno = alunoRepository.findById(new Aluno(id));
 				imprimirAluno(aluno);
@@ -532,7 +532,7 @@ public class MenuApp {
 			}
 
 			if (aluno == null) {
-				System.out.println("Aluno n�o encontrado!");
+				System.out.println("Aluno não encontrado!");
 			}
 		}
 
@@ -546,7 +546,7 @@ public class MenuApp {
 		while (aluno == null) {
 
 			try {
-				System.out.println("Informe o c�digo para remover: ");
+				System.out.println("Informe o código para remover: ");
 				final Long id = menu.lerLong();
 				aluno = alunoRepository.findById(new Aluno(id));
 				imprimirAluno(aluno);
@@ -554,7 +554,7 @@ public class MenuApp {
 			}
 
 			if (aluno == null) {
-				System.out.println("Aluno n�o encontrado!");
+				System.out.println("Aluno não encontrado!");
 			} else {
 				alunoRepository.remove(aluno);
 				System.out.println("Aluno removido com sucesso!");
@@ -576,7 +576,7 @@ public class MenuApp {
 	private static void imprimirAluno(Aluno aluno) {
 
 		System.out.println("\n\n");
-		System.out.println("C�digo: " + aluno.getId());
+		System.out.println("código: " + aluno.getId());
 		System.out.println("Nome: " + aluno.getNome());
 		System.out.println("CPF: " + aluno.getCpf());
 		System.out.println("RG: " + aluno.getRg());
@@ -617,13 +617,13 @@ public class MenuApp {
 		while (exercicio == null) {
 
 			try {
-				System.out.println("Informe o c�digo para alterar: ");
+				System.out.println("Informe o código para alterar: ");
 				exercicio = exercicioRepository.findById(new Exercicio(menu.lerLong()));
 			} catch (final Exception e) {
 			}
 
 			if (exercicio == null) {
-				System.out.println("Exerc�cio n�o encontrado!");
+				System.out.println("Exerc�cio não encontrado!");
 			}
 		}
 
@@ -646,7 +646,7 @@ public class MenuApp {
 			}
 
 			if (exercicio == null) {
-				System.out.println("Exerc�cio n�o encontrado!");
+				System.out.println("Exerc�cio não encontrado!");
 			}
 		}
 
@@ -660,7 +660,7 @@ public class MenuApp {
 		while (exercicio == null) {
 
 			try {
-				System.out.println("Informe o c�digo para buscar: ");
+				System.out.println("Informe o código para buscar: ");
 				final Long id = menu.lerLong();
 				exercicio = exercicioRepository.findById(new Exercicio(id));
 				imprimirExercicio(exercicio);
@@ -668,7 +668,7 @@ public class MenuApp {
 			}
 
 			if (exercicio == null) {
-				System.out.println("Exerc�cio n�o encontrado!");
+				System.out.println("Exerc�cio não encontrado!");
 			}
 		}
 
@@ -683,7 +683,7 @@ public class MenuApp {
 		while (exercicio == null) {
 
 			try {
-				System.out.println("Informe o c�digo para remover: ");
+				System.out.println("Informe o código para remover: ");
 				final Long id = menu.lerLong();
 				exercicio = exercicioRepository.findById(new Exercicio(id));
 				imprimirExercicio(exercicio);
@@ -691,10 +691,10 @@ public class MenuApp {
 			}
 
 			if (exercicio == null) {
-				System.out.println("Exerc�cio n�o encontrado!");
+				System.out.println("Exerc�cio não encontrado!");
 			} else {
 				exercicioRepository.remove(exercicio);
-				System.out.println("Exerc�cio removido com sucesso!");
+				System.out.println("Exercício removido com sucesso!");
 			}
 		}
 
@@ -703,7 +703,7 @@ public class MenuApp {
 	private static void listarExercicios(AbstractBaseMenu menu) throws ReadFileException, WriteFileException {
 		final ExercicioRepository exercicioRepository = new ExercicioRepository();
 
-		System.out.println("Listando exerc�cios: ");
+		System.out.println("Listando exercícios: ");
 		List<Exercicio> exercicios = new ArrayList<>();
 		exercicios = exercicioRepository.findAll();
 		exercicios.stream().forEach(exercicio -> imprimirExercicio(exercicio));
@@ -713,9 +713,9 @@ public class MenuApp {
 	private static void imprimirExercicio(Exercicio exercicio) {
 
 		System.out.println("\n\n");
-		System.out.println("C�digo: " + exercicio.getId());
+		System.out.println("Código: " + exercicio.getId());
 		System.out.println("Nome: " + exercicio.getNome());
-		System.out.println("S�ries: " + exercicio.getSeries());
+		System.out.println("Séries: " + exercicio.getSeries());
 		System.out.println("Tipo exerc�cio: " + exercicio.getTipoExercicio().toString());
 
 	}
@@ -753,13 +753,13 @@ public class MenuApp {
 		while (instrutor == null) {
 
 			try {
-				System.out.println("Informe o c�digo para alterar: ");
+				System.out.println("Informe o código para alterar: ");
 				instrutor = instrutorRepository.findById(new Instrutor(menu.lerLong()));
 			} catch (final Exception e) {
 			}
 
 			if (instrutor == null) {
-				System.out.println("Instrutor n�o encontrado!");
+				System.out.println("Instrutor não encontrado!");
 			}
 		}
 
@@ -781,7 +781,7 @@ public class MenuApp {
 			}
 
 			if (instrutor == null) {
-				System.out.println("Instrutor n�o encontrado!");
+				System.out.println("Instrutor não encontrado!");
 			}
 		}
 
@@ -794,7 +794,7 @@ public class MenuApp {
 		while (instrutor == null) {
 
 			try {
-				System.out.println("Informe o c�digo para buscar: ");
+				System.out.println("Informe o código para buscar: ");
 				final Long id = menu.lerLong();
 				instrutor = instrutorRepository.findById(new Instrutor(id));
 				imprimirInstrutor(instrutor);
@@ -802,7 +802,7 @@ public class MenuApp {
 			}
 
 			if (instrutor == null) {
-				System.out.println("Instrutor n�o encontrado!");
+				System.out.println("Instrutor não encontrado!");
 			}
 		}
 
@@ -816,7 +816,7 @@ public class MenuApp {
 		while (instrutor == null) {
 
 			try {
-				System.out.println("Informe o c�digo para remover: ");
+				System.out.println("Informe o código para remover: ");
 				final Long id = menu.lerLong();
 				instrutor = instrutorRepository.findById(new Instrutor(id));
 				imprimirInstrutor(instrutor);
@@ -824,7 +824,7 @@ public class MenuApp {
 			}
 
 			if (instrutor == null) {
-				System.out.println("Instrutor n�o encontrado!");
+				System.out.println("Instrutor não encontrado!");
 			} else {
 				instrutorRepository.remove(instrutor);
 				System.out.println("Instrutor removido com sucesso!");
@@ -846,7 +846,7 @@ public class MenuApp {
 	private static void imprimirInstrutor(Instrutor instrutor) {
 
 		System.out.println("\n\n");
-		System.out.println("C�digo: " + instrutor.getId());
+		System.out.println("código: " + instrutor.getId());
 		System.out.println("Nome: " + instrutor.getNome());
 		System.out.println("CPF: " + instrutor.getCpf());
 		System.out.println("RG: " + instrutor.getRg());
@@ -883,13 +883,13 @@ public class MenuApp {
 		while (usuario == null) {
 
 			try {
-				System.out.println("Informe o c�digo para alterar: ");
+				System.out.println("Informe o código para alterar: ");
 				usuario = usuarioRepository.findById(new Usuario(menu.lerLong()));
 			} catch (final Exception e) {
 			}
 
 			if (usuario == null) {
-				System.out.println("Usu�rio n�o encontrado!");
+				System.out.println("Usu�rio não encontrado!");
 			}
 		}
 
@@ -911,7 +911,7 @@ public class MenuApp {
 			}
 
 			if (usuario == null) {
-				System.out.println("Usu�rio n�o encontrado!");
+				System.out.println("Usuário não encontrado!");
 			}
 		}
 
@@ -924,7 +924,7 @@ public class MenuApp {
 		while (usuario == null) {
 
 			try {
-				System.out.println("Informe o c�digo para buscar: ");
+				System.out.println("Informe o código para buscar: ");
 				final Long id = menu.lerLong();
 				usuario = usuarioRepository.findById(new Usuario(id));
 				imprimirUsuario(usuario);
@@ -932,7 +932,7 @@ public class MenuApp {
 			}
 
 			if (usuario == null) {
-				System.out.println("Usu�rio n�o encontrado!");
+				System.out.println("Usuário não encontrado!");
 			}
 		}
 
@@ -946,7 +946,7 @@ public class MenuApp {
 		while (usuario == null) {
 
 			try {
-				System.out.println("Informe o c�digo para buscar: ");
+				System.out.println("Informe o código para buscar: ");
 				final Long id = menu.lerLong();
 				usuario = usuarioRepository.findById(new Usuario(id));
 				imprimirUsuario(usuario);
@@ -954,10 +954,10 @@ public class MenuApp {
 			}
 
 			if (usuario == null) {
-				System.out.println("Usu�rio n�o encontrado!");
+				System.out.println("Usuário não encontrado!");
 			} else {
 				usuarioRepository.remove(usuario);
-				System.out.println("Usu�rio removido com sucesso!");
+				System.out.println("Usuário removido com sucesso!");
 			}
 		}
 
@@ -966,7 +966,7 @@ public class MenuApp {
 	private static void listarUsuarios(AbstractBaseMenu menu) throws ReadFileException, WriteFileException {
 		final UsuarioRepository usuarioRepository = new UsuarioRepository();
 
-		System.out.println("Listando usu�rios: ");
+		System.out.println("Listando usuários: ");
 		List<Usuario> usuarios = new ArrayList<>();
 		usuarios = usuarioRepository.findAll();
 		usuarios.stream().forEach(usuario -> imprimirUsuario(usuario));
@@ -975,7 +975,7 @@ public class MenuApp {
 	private static void imprimirUsuario(Usuario usuario) {
 
 		System.out.println("\n\n");
-		System.out.println("C�digo: " + usuario.getId());
+		System.out.println("Código: " + usuario.getId());
 		System.out.println("E-mail: " + usuario.getEmail());
 
 	}
