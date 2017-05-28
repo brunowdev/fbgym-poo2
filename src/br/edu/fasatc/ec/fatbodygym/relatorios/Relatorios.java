@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import br.edu.fasatc.ec.fatbodygym.dados.RemoteConnection;
+import br.edu.fasatc.ec.fatbodygym.dados.RemoteConnectionProxy;
 import br.edu.fasatc.ec.fatbodygym.model.Aluno;
 import br.edu.fasatc.ec.fatbodygym.model.Exercicio;
 import br.edu.fasatc.ec.fatbodygym.model.Treino;
@@ -30,7 +30,7 @@ public class Relatorios {
 	public static void relatorioExercicioMaisPraticados(String path, Usuario usuario)
 			throws FileNotFoundException {
 
-		RemoteConnection rc = connect(usuario);
+		RemoteConnectionProxy rc = connect(usuario);
 
 		List<Treino> treinos = rc.getTreinoFacade().buscarTodosTreinos();
 
@@ -83,7 +83,7 @@ public class Relatorios {
 	 */
 	public static void relatorioAlunosMaisAtivos(String path, Usuario usuario) throws FileNotFoundException {
 
-		RemoteConnection rc = connect(usuario);
+		RemoteConnectionProxy rc = connect(usuario);
 
 		List<Treino> treinos = rc.getTreinoFacade().buscarTodosTreinos();
 
@@ -131,7 +131,7 @@ public class Relatorios {
 	 */
 	public static void relatorioAlunos(String path, Usuario usuario) throws FileNotFoundException {
 
-		RemoteConnection rc = connect(usuario);
+		RemoteConnectionProxy rc = connect(usuario);
 
 		List<Aluno> alunos = rc.getAlunosApi().buscarTodosAlunos();
 
@@ -159,8 +159,8 @@ public class Relatorios {
 
 	}
 	
-	private static final RemoteConnection connect(Usuario usuario) {
-		RemoteConnection rc = new RemoteConnection();
+	private static final RemoteConnectionProxy connect(Usuario usuario) {
+		RemoteConnectionProxy rc = new RemoteConnectionProxy();
 
 		rc.connect(usuario);
 		

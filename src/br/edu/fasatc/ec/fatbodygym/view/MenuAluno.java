@@ -2,12 +2,6 @@ package br.edu.fasatc.ec.fatbodygym.view;
 
 import java.util.Scanner;
 
-/**
- * Representa o menu que estar? acess?vel quando um aluno efetuar login.
- *
- * @author BRUNO-PC
- *
- */
 public class MenuAluno extends AbstractBaseMenu {
 
 	public MenuAluno(Scanner scanner) {
@@ -21,8 +15,8 @@ public class MenuAluno extends AbstractBaseMenu {
 			System.out.println("\n=================================== MENU ===================================");
 			System.out.println("1. Cadastrar um treino");
 			System.out.println("2. Editar um treino");
-			System.out.println("3. Consultar treino (pesquisa textual por exerc?cio)");
-			System.out.println("4. Consultar treino (pesquisa por c?digo do exerc?cio)");
+			System.out.println("3. Consultar treino (pesquisa textual por exercício)");
+			System.out.println("4. Consultar treino (pesquisa por código do exercício)");
 			System.out.println("5. Listar meus Treinos");
 			System.out.println("6. Remover treino");
 			System.out.println("0. Sair");
@@ -30,7 +24,7 @@ public class MenuAluno extends AbstractBaseMenu {
 			opcao = scanner.nextInt();
 			scanner.nextLine();
 			if (opcao < getOpcaoMinima() || opcao > getOpcaoMaxima()) {
-				System.out.println("\nOpcao inv?lida!!!\n");
+				System.out.println("\nOpcao inválida!!!\n");
 			}
 		} while (opcao < getOpcaoMinima() || opcao > getOpcaoMaxima());
 		return opcao;
