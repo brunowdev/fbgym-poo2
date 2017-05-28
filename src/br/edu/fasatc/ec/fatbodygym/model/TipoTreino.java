@@ -3,7 +3,7 @@ package br.edu.fasatc.ec.fatbodygym.model;
 import java.io.Serializable;
 import java.util.function.Supplier;
 
-import br.edu.fasatc.ec.fatbodygym.model.treinos.QueimaCaloriasStrategy;
+import br.edu.fasatc.ec.fatbodygym.model.treinos.ResultadoTreino;
 import br.edu.fasatc.ec.fatbodygym.model.treinos.resultados.*;
 
 
@@ -17,7 +17,7 @@ public enum TipoTreino implements EnumDescription, EnumInteger, Serializable {
 	POTENCIA_MUSCULAR(4, "Potência muscular", new TipoExercicio[] {CROSSFIT, SPINNING}, TreinoPotenciaMuscularStrategy::new), 
 	RESISTENCIA_MUSCULAR(5, "Resistência muscular", new TipoExercicio[] {MUAY_THAY, HIPERTROFIA_MUSCULAR}, TreinoResistenciaMuscularStrategy::new);
 
-	private TipoTreino(Integer integer, String description, TipoExercicio[] exercicios, Supplier<QueimaCaloriasStrategy> strategy) {
+	private TipoTreino(Integer integer, String description, TipoExercicio[] exercicios, Supplier<ResultadoTreino> strategy) {
 		this.integer = integer;
 		this.description = description;
 		this.exercicios = exercicios;
@@ -27,7 +27,7 @@ public enum TipoTreino implements EnumDescription, EnumInteger, Serializable {
 	private final Integer integer;
 	private final String description;
 	private final TipoExercicio[] exercicios;
-	private final Supplier<QueimaCaloriasStrategy> strategy;
+	private final Supplier<ResultadoTreino> strategy;
 
 	@Override
 	public Integer getInteger() {
@@ -43,7 +43,7 @@ public enum TipoTreino implements EnumDescription, EnumInteger, Serializable {
 		return exercicios;
 	}
 
-	public Supplier<QueimaCaloriasStrategy> getStrategy() {
+	public Supplier<ResultadoTreino> getStrategy() {
 		return strategy;
 	}
 

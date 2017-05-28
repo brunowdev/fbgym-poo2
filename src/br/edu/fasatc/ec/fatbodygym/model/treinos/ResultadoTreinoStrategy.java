@@ -2,15 +2,15 @@ package br.edu.fasatc.ec.fatbodygym.model.treinos;
 
 public class ResultadoTreinoStrategy {
 
-	private QueimaCaloriasStrategy strategy;
+	private ResultadoTreino strategy;
 	
 
-	public ResultadoTreinoStrategy(QueimaCaloriasStrategy strategy) {
+	public ResultadoTreinoStrategy(ResultadoTreino strategy) {
 		super();
 		this.strategy = strategy;
 	}
 	
-	public void changeStrategy(QueimaCaloriasStrategy newStrategy) {
+	public void changeStrategy(ResultadoTreino newStrategy) {
 		this.strategy = newStrategy;
 	}
 	

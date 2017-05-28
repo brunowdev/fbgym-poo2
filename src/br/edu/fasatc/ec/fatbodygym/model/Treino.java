@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 import br.edu.fasatc.ec.fatbodygym.constansts.ErpDatabaseConstants;
 import br.edu.fasatc.ec.fatbodygym.constansts.LocalFileAsTable;
-import br.edu.fasatc.ec.fatbodygym.model.treinos.QueimaCaloriasStrategy;
+import br.edu.fasatc.ec.fatbodygym.model.treinos.ResultadoTreino;
 
 @LocalFileAsTable(tableName = ErpDatabaseConstants.TABLE_TREINOS)
 public class Treino extends AbstractEntidadeEntity implements SearchableString {
@@ -136,7 +136,7 @@ public class Treino extends AbstractEntidadeEntity implements SearchableString {
 	
 	public void finalizarTreino() {
 		
-		QueimaCaloriasStrategy strategy = tipoTreino.getStrategy().get();
+		ResultadoTreino strategy = tipoTreino.getStrategy().get();
 		
 		this.queimaCalorias = strategy.calcularQueimaCalorias();
 

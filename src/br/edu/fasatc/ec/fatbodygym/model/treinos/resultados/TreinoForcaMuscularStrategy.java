@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 import br.edu.fasatc.ec.fatbodygym.model.TipoTreino;
 import br.edu.fasatc.ec.fatbodygym.model.treinos.AbstractTreinoStrategy;
-import br.edu.fasatc.ec.fatbodygym.model.treinos.QueimaCaloriasStrategy;
+import br.edu.fasatc.ec.fatbodygym.model.treinos.ResultadoTreino;
 
-public class TreinoForcaMuscularStrategy extends AbstractTreinoStrategy implements QueimaCaloriasStrategy{
+public class TreinoForcaMuscularStrategy extends AbstractTreinoStrategy implements ResultadoTreino{
 
 	public TreinoForcaMuscularStrategy() {
 		super(TipoTreino.FORCA_MUSCULAR);

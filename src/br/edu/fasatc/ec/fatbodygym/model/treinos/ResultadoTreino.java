@@ -1,6 +1,6 @@
 package br.edu.fasatc.ec.fatbodygym.model.treinos;
 
-public interface QueimaCaloriasStrategy {
+public interface ResultadoTreino {
 
 	Double calcularQueimaCalorias();
 	
